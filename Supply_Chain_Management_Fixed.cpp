@@ -12,7 +12,6 @@
 using namespace std;
 
 
-// C++11-compatible replacement for std::quoted (C++14).
 class QuotedToken {
 public:
     const string& value;
@@ -46,7 +45,6 @@ istream& operator>>(istream& in, const QuotedToken& q) {
     return in;
 }
 
-// ---------- Utility functions ----------
 int readInt(const string& prompt) {
     int value;
     while (true) {
@@ -82,7 +80,7 @@ string readLine(const string& prompt) {
     return value;
 }
 
-// ---------- Base class: runtime polymorphism ----------
+
 class Person {
 protected:
     int id;
@@ -93,7 +91,7 @@ public:
     Person() : id(0), name(""), contact("") {}
     Person(int i, const string& n, const string& c)
         : id(i), name(n), contact(c) {}
-    virtual ~Person() = default; // virtual destructor for base-class safety
+    virtual ~Person() = default; 
 
     int getId() const { return id; }
     string getName() const { return name; }
@@ -221,10 +219,10 @@ public:
     }
 };
 
-// ---------- System manager ----------
+
 class SupplyChainSystem {
 private:
-    // unique_ptr demonstrates dynamic memory allocation with automatic cleanup.
+ 
     vector<unique_ptr<Product>> products;
     vector<unique_ptr<Customer>> customers;
     vector<unique_ptr<Supplier>> suppliers;
@@ -389,7 +387,7 @@ public:
             if (c) c->display(); else cout << "Customer not found.\n";
         } else if (choice == 4) {
             if (!c) { cout << "Customer not found.\n"; return; }
-            // Customer fields are intentionally read-only in this minimal model.
+            
             cout << "Update is not available for customer fields in this version.\n";
         } else if (choice == 5) {
             if (!c) { cout << "Customer not found.\n"; return; }
